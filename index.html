@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Financial Tracker</title>
+<meta name="theme-color" content="#000000">
+<meta name="description" content="Track your income, spending, and savings goals.">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Wallet">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="icon" type="image/png" href="icons/icon-192.png">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+<section class="wallet">
+<button class="rep" data-open="report" aria-label="Report"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l4 4v5"/><path d="M6 3v17h5"/><path d="M9 8h4M9 12h2"/><circle cx="17" cy="17" r="4.5"/><text x="17" y="19.4" font-size="7" text-anchor="middle" fill="#fff" stroke="none">$</text></svg></button>
+<h1>Wallet</h1>
+<div class="bal" id="bal">Rp. 000.0</div>
+<label class="pill big" style="margin:0;color:#fff;font-size:16px"><b>+</b><input id="inc" type="text" inputmode="numeric" placeholder="Monthly Income" autocomplete="off"></label>
+<div class="pill sm"><span>-Rp.</span><input id="daily" type="text" inputmode="numeric" placeholder="Daily Spending" autocomplete="off"><button id="go" aria-label="Add">›</button></div>
+<p class="hint" id="hint"></p>
+</section>
+<div class="hd"><h2>Spending</h2><button data-open="alloc">⚙ Allocation</button></div>
+<div id="pots"></div>
+</main>
+<div id="ov"></div>
+<div id="sheet"></div>
+<div id="toast"></div>
+
+<script src="app.js"></script>
+<script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('./sw.js').then(function(reg) {
+    console.log('SW registered:', reg.scope);
+  }).catch(function(err) {
+    console.log('SW error:', err);
+  });
+}
+</script>
+</body>
+</html>
